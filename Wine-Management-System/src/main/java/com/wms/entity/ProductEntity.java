@@ -1,33 +1,36 @@
 package com.wms.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "Product")
 public class ProductEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    // Speficy data type as per prodcut type....sr change into lond
+    @Column(name = "Id")
     private int id;
-    private String sr;
-    private String item; //product
-    private String price;
-    private String mL;
-    private String quentity;
+    @Column(name = "Sr_no")
+    private int sr;
+    @Column(name = "Product_Name")
+    private String product_Name; //product
+    @Column(name = "Price")
+    private Long price;
+    @Column(name = "ML")
+    private int mL;
+    @Column(name = "Quantity")
+    private int quantity;
+    @Column(name = "Flavours")
     private String flavours;
 
     public ProductEntity(){}
 
-    public ProductEntity( String sr, String item, String price, String mL, String quentity, String flavours) {
-
+    public ProductEntity(int sr, String product_Name, Long price, int mL, int quantity, String flavours) {
         this.sr = sr;
-        this.item = item;
+        this.product_Name = product_Name;
         this.price = price;
         this.mL = mL;
-        this.quentity = quentity;
+        this.quantity = quantity;
         this.flavours = flavours;
     }
 
@@ -39,44 +42,44 @@ public class ProductEntity {
         this.id = id;
     }
 
-    public String getSr() {
+    public int getSr() {
         return sr;
     }
 
-    public void setSr(String sr) {
+    public void setSr(int sr) {
         this.sr = sr;
     }
 
-    public String getItem() {
-        return item;
+    public String getProduct_Name() {
+        return product_Name;
     }
 
-    public void setItem(String item) {
-        this.item = item;
+    public void setProduct_Name(String product_Name) {
+        this.product_Name = product_Name;
     }
 
-    public String getPrice() {
+    public Long getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(Long price) {
         this.price = price;
     }
 
-    public String getmL() {
+    public int getmL() {
         return mL;
     }
 
-    public void setmL(String mL) {
+    public void setmL(int mL) {
         this.mL = mL;
     }
 
-    public String getQuentity() {
-        return quentity;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setQuentity(String quentity) {
-        this.quentity = quentity;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public String getFlavours() {
@@ -91,11 +94,11 @@ public class ProductEntity {
     public String toString() {
         return "ProductEntity{" +
                 "id=" + id +
-                ", sr='" + sr + '\'' +
-                ", item='" + item + '\'' +
-                ", price='" + price + '\'' +
-                ", mL='" + mL + '\'' +
-                ", quentity='" + quentity + '\'' +
+                ", sr=" + sr +
+                ", product_Name='" + product_Name + '\'' +
+                ", price=" + price +
+                ", mL=" + mL +
+                ", quantity=" + quantity +
                 ", flavours='" + flavours + '\'' +
                 '}';
     }
