@@ -20,6 +20,13 @@ public class ProductExceptionHandler {
         return new ResponseEntity<>(errorResponse,HttpStatus.NOT_ACCEPTABLE);
     }
 
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleProductExistException(UserNotFoundException e) {
+        ErrorResponse errorResponse = new ErrorResponse(e.getMessage(), HttpStatus.NOT_FOUND.value(), System.currentTimeMillis());
+        return new ResponseEntity<>(errorResponse,HttpStatus.NOT_FOUND);
+    }
+
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> handleGenericException(Exception e) {
         ErrorResponse errorResponse = new ErrorResponse("An unexpected error occurred", HttpStatus.NOT_FOUND.value(), System.currentTimeMillis());
