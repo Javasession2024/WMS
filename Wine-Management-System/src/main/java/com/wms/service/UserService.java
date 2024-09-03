@@ -28,12 +28,12 @@ public class UserService {
 
             List<UserEntity> UserList = userRepo.findByUserNamePassword(UserName,Password);
 
-            if (UserList.isEmpty()) {
+            if (UserList != null && UserList.isEmpty()) {
+                logger.info("Valid User");
+                return "User Login Successfully";
+            } else {
                 logger.warn("User Not Present");
                 throw new UserNotFoundException("Invalid UserName And Password");
-            } else {
-                logger.info("Product Save Successfully");
-                return "User Login Successfully";
             }
         } catch (UserNotFoundException e) {
             throw new UserNotFoundException("Invalid UserName And Password");
